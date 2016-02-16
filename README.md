@@ -11,7 +11,9 @@ The application requires:
 ## How to run.
 Perform the next command from the root folder of the project:
 
+```
 mvn spring-boot:run
+```
 
 ## How to access the application.
 Just navigate to [http://localhost:8080/](http://localhost:8080/) using your favorite browser.
