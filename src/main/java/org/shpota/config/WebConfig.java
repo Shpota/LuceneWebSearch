@@ -66,7 +66,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public EmbeddedServletContainerCustomizer containerCustomizer() {
         return container -> {
             container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/pagenotfound"));
-            container.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error"));
+            container.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/internalerror"));
         };
     }
 

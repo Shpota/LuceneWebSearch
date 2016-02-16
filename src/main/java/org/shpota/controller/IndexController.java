@@ -32,7 +32,7 @@ public class IndexController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String loadPage(Model model) {
+    public String loadPage() {
         LOG.debug("GET request to index page");
         return "index";
     }
