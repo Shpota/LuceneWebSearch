@@ -94,16 +94,15 @@ public class SearchService {
             doc.add(new Field(CONTENT, content, TextField.TYPE_STORED));
             iwriter.addDocument(doc);
         }
-        for (String link : parser.getAllLinks()) {
-            if (!isEmpty(link)) {
-                try {
-                    addLinkedPagesToIndex(link, depth + 1, indexedURLs);
-                } catch (IOException e) {
-                    // Ignore errors for children URLs
-                    LOG.warn("IOException occured while parsing " + link, e);
-                }
+
+        parser.getAllLinks().stream().filter(link -> isEmpty(link)).forEach(link -> {
+            try {
+                addLinkedPagesToIndex(link, depth + 1, indexedURLs);
+            } catch (IOException | ParseException e) {
+                // Ignore errors for children URLs
+                LOG.warn("IOException occured while parsing " + link, e);
             }
-        }
+        });
     }
 
     /**
